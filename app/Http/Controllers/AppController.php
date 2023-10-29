@@ -23,8 +23,9 @@ class AppController extends Controller
         return view("projects")->with('projects_array', $projects_array)->with('urls', $this->urls);
     }
 
-    public function project_by_id(int $project_id)
+    public function project_by_id($project_id)
     {
+        $project_id =(int)$project_id;
         $titles = ["name" => "Name", "language" => "Language", "description" => "Description","create_date" => "Create date"];
         $file_contents = File::get(storage_path("data/projects.json"));
         $projects_array = json_decode($file_contents, true);
@@ -38,8 +39,16 @@ class AppController extends Controller
             unset($project_details_array['id']);
             return view("single_project")->with('project_details_array',$project_details_array ) ->with('urls', $this->urls)->with('titles', $titles);
         }else{
-            return '';
+            return view("404") ->with('urls', $this->urls);
         }
 
+    }
+
+    public function experience(): View
+    {
+        $file_contents = File::get(storage_path("data/experience.json"));
+        $experience_array = json_decode($file_contents, true);
+        //dd($experience_array);
+        return view("experience")->with('experience_array', $experience_array)->with('urls', $this->urls);
     }
 }

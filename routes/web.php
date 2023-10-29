@@ -21,4 +21,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AppController::class,"index"]);
 Route::get('/projects', [AppController::class,"projects"]);
 Route::get('/projects/{id}', [AppController::class,"project_by_id"]);
+Route::get('/experience', [AppController::class,"experience"]);
 
