@@ -32,7 +32,7 @@ class AppController extends Controller
         $project_ftiltered = array_filter($projects_array, function ($value, $key) use ($project_id) {
             return ($value['id'] == $project_id);
         }, ARRAY_FILTER_USE_BOTH);
-        //echo '<pre>';print_r(reset($project_ftiltered));die();
+
         $project_details_array = reset($project_ftiltered);
 
         if ($project_details_array) {
@@ -48,7 +48,6 @@ class AppController extends Controller
     {
         $file_contents = File::get(storage_path("data/experience.json"));
         $experience_array = json_decode($file_contents, true);
-        //dd($experience_array);
         return view("experience")->with('experience_array', $experience_array)->with('urls', $this->urls);
     }
 }

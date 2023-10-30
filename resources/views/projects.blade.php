@@ -58,8 +58,8 @@
                     @endif
                     <a href="/projects/{{$value['id']}}">
                         <div class="resume-wrap ftco-animate">
-                            <span class="date">{{$value['create_date']}}</span>
-                            <h2>{{$value['name']}}</h2>
+                            <span class="date">{{$value['name']}}</span>
+                            <h2>{{$value['create_date']}}</h2>
                         </div>
                     </a>
                     @if ($count%2 === 0)
